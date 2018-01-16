@@ -7,7 +7,8 @@ dist/
 __pycache__/
 *.so
 *~
-
+.eggs
 # due to using tox and pytest
 .tox
 .cache
+*.ipynb_checkpoints*
