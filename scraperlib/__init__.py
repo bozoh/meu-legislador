@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 '''
-Lib em python para a API dados aberto da câmara dos deputados
+Lib em pyhton para falicitar a extração de dados da API dados aberto da 
+câmara dos deputados
 .. seealso:: https://dadosabertos.camara.leg.br/swagger/api.html
 '''
 import sys
-from dadosabertos.Proposicoes import Proposicoes
-from dadosabertos.Deputados import Deputados
-from dadosabertos.api_base import ApiBase
 
 __author__ = 'Carlos Alexandre S. da Fonseca'
 __version__ = '1.0.0'
