@@ -13,3 +13,4 @@ __pycache__/
 .cache
 .vscode
 *.ipynb_checkpoints*
+teste.py

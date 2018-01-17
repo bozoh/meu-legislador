@@ -31,7 +31,7 @@ class TestApiBase(TestCase):
 
         result = self.AB._get_query_string()
         self.assertTrue(result.count('?') == 1)
-        self.assertTrue(result.count('&') == 5)
+        self.assertTrue(result.count('&') == 5, result)
         self.assertTrue(result.count('=') == 6)
         self.assertTrue(result.count('teste') == 3)
         self.assertTrue(result.count('prova') == 3)
@@ -55,17 +55,4 @@ class TestApiBase(TestCase):
         self.assertTrue('testes=2' in result)
         self.assertFalse('testes=3' in result)
         self.assertTrue('testes=5' in result)
-
-    def test_erro_se_chamar_next_direto(self):
-        with self.assertRaises(NotImplementedError):
-            self.AB.next()
     
-    # def test_erro_se_chamar_get_base_url_direto(self):
-    #     with self.assertRaises(NotImplementedError):
-    #         self.AB.get_base_url()
-    
-    def test_erro_se_chamar_has_next_direto(self):
-        with self.assertRaises(NotImplementedError):
-            self.AB.has_next()
-
-        
