@@ -27,6 +27,22 @@ class TestProposicoes(TestCase):
         self.p.busca_todas()
         self.assertEqual(self.p.get_dados_url(), self.base_url)
     
+    def test_se_url_da_proposicao_esta_correta(self):
+        self.p.busca_por_id(1)
+        self.assertEqual(self.p.get_dados_url(), self.base_url+'/1')
+    
+    def test_se_url_da_proposicao_relacionadas_esta_correto(self):
+        self.p.busca_relacionadas(1)
+        self.assertEqual(self.p.get_dados_url(), self.base_url+'/1/relacionadas')
+    
+    def test_se_url_da_tramitacoes_da_proposicao_esta_correto(self):
+        self.p.busca_tramitacoes(1)
+        self.assertEqual(self.p.get_dados_url(), self.base_url+'/1/tramitacoes')
+    
+    def test_se_url_da_votacoes_da_proposicao_esta_correto(self):
+        self.p.busca_votacoes(1)
+        self.assertEqual(self.p.get_dados_url(), self.base_url+'/1/votacoes')
+
     def test_se_url_todas_proposicoes_com_id_esta_correta(self):
         '''
         id Número(s) identificador(es) de uma ou mais proposições no Dados Abertos

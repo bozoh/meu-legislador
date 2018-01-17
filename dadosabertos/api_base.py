@@ -5,7 +5,7 @@ Lib em pyhton para a API dados aberto da câmara dos deputados, para as Proposi�
 """
 import re
 import requests
-from dadosabertos.erros import NotApiUrlError
+from dadosabertos.erros import NotApiUrlError, InvalidApiRequestError
 
 class ApiBase(object):
     """
@@ -114,6 +114,10 @@ class ApiBase(object):
 
         resp = requests.get(url, headers={'accept': 'application/json'})
         resp = resp.json()
+        if 'status' in resp:
+            #Requisição foi inválida
+            raise InvalidApiRequestError(resp['title'] + ' - ' + resp['instance'])
+
         if 'links' in resp:
             self.__get_total_paginas(resp['links'])
             self.__get_pagina_atual(resp['links'])

@@ -14,46 +14,79 @@ class Proposicoes(ApiBase):
         self.__proposicao_base_uri = self._base_uri + '/proposicoes'
 
     def busca_todas(self):
-        """
-        Busca todas as proposições dos Dados Abertos, com filtragem ou não
+        """Busca todas as proposições dos Dados Abertos, com filtragem ou não
         dependente do que foi atribuido anteriosmente (set_ids, set_autor, ...)
 
         .. note:: Faz um requisição à /proposicoes
-
-            :return: Dados das proposições em formato JSON
+        
+        Returns:
+            [dict] -- Dados das proposições
         """
         self._work_url = self.__proposicao_base_uri
-        dados = self._get_dados()
-        print(dados)
-        return dados
+        return self._get_dados()
 
-    def busca_por_id(self, id=None):
-        """
-        Busca uma proposicao em particular pelo identificador das proposições
+    def busca_por_id(self, id):
+        """Busca uma proposicao em particular pelo identificador das proposições
         no Dados Abertos.
         Esse método retorna mais detalhes da proposição
 
-        .. note:: Faz um requisição à /proposicoes/{id}
+        Arguments:
+            id {string} -- Identificador das proposição no Dados Aberto
 
-            :param str id: id da proposição
-
-            :return: Dados da proposição em formato JSON
+        Returns:
+            [dict] -- Dados das proposições relacionadas
         """
-        raise NotImplementedError()
+        return self._get_dados(self.__proposicao_base_uri + '/' + str(id))
 
+    def busca_relacionadas(self, id):
+        """Busca as proposições relacionadas a proposição do id
+
+        Arguments:
+            id {string} -- Identificador das proposição no Dados Aberto
+
+        Returns:
+            [dict] -- Dados das proposições relacionadas
+        """
+        self._work_url = self.__proposicao_base_uri + '/' + str(id) + '/relacionadas'
+        return self._get_dados()
+
+    def busca_tramitacoes(self, id):
+        """Busca as tramitações da proposição
+
+        Arguments:
+            id {string} -- Identificador das proposição no Dados Aberto
+
+        Returns:
+            [dict] -- Dados das tramitaões
+        """
+        self._work_url = self.__proposicao_base_uri + '/' + str(id) + '/tramitacoes'
+        return self._get_dados()
+
+    def busca_votacoes(self, id):
+        """Busca as votações da proposição
+
+        Arguments:
+            id {string} -- Identificador das proposição no Dados Aberto
+
+        Returns:
+            [dict] -- Dados das votações
+        """
+        self._work_url = self.__proposicao_base_uri + '/' + str(id) + '/votacoes'
+        return self._get_dados()
 
     def set_ids(self, ids):
-        """
-        Números identificadores das proposições no Dados Abertos,
-
-            :param list ids: ids das proposições
+        """Números identificadores das proposições no Dados Abertos,
+        
+        Arguments:
+            ids {list} -- ids das proposições
         """
         self._add_query_params('id', ids)
 
     def set_siglas_tipo(self, siglas):
         """
         Siglas dos tipos das proposições que se deseja obter.
-        A lista de tipos e siglas existentes pode ser obtida em /referencias/tiposProposicao
+        A lista de tipos e siglas existentes pode ser obtida em 
+        .. seealso:: /referencias/tiposProposicao
 
             :param list siglas: siglas dos tipos de proposicões
         """

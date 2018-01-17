@@ -5,6 +5,7 @@ Lib em pyhton para a API dados aberto da câmara dos deputados
 '''
 import sys
 from dadosabertos.erros.NotApiUrlError import NotApiUrlError
+from dadosabertos.erros.InvalidApiRequestError import InvalidApiRequestError
 
 __author__ = 'Carlos Alexandre S. da Fonseca'
 __version__ = '1.0.0'
