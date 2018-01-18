@@ -22,10 +22,13 @@ class DataFrameJson(pd.DataFrame):
         tmp_list = list()
         current_key = ''
         for prefix, event, value in parse:
+            #print("prefix=%s | event=%s | value=%s" % (prefix, event, value))
             if event == 'start_array':
                 list_level += 1
             elif event == 'end_array':
                 if list_level > 1:
+                    if current_key not in data:
+                        data[current_key] = list()
                     data[current_key].append(','.join(tmp_list))
                     tmp_list.clear()
                     current_key = ''
@@ -38,11 +41,10 @@ class DataFrameJson(pd.DataFrame):
             elif event != 'end_map' and event != 'start_map':
                 if current_key not in data:
                     data[current_key] = list()
-
                 if list_level > 1:
                     tmp_list.append(value)
                 else:
                     data[current_key].append(value)
                     current_key = ''
-
+            #print("current_key=%s | list_level=%i | tmp_list=%s" % (current_key, list_level, tmp_list))
         return data
