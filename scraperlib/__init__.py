@@ -5,6 +5,9 @@ câmara dos deputados
 .. seealso:: https://dadosabertos.camara.leg.br/swagger/api.html
 '''
 import sys
+from scraperlib.fetchallbase import FetchAllBase
+from scraperlib.deputados.fetchall import FetchDepudados
+from scraperlib.dataframe_json import DataFrameJson
 
 __author__ = 'Carlos Alexandre S. da Fonseca'
 __version__ = '1.0.0'

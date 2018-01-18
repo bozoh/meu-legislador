@@ -147,6 +147,15 @@ class ApiBase(object):
     def __get_next_url(self, links):
         self._next_url = ''.join([url['href'] for url in links if url['rel'] == 'next'])
 
+    def get_pagina_atual(self):
+        """Retorna a página atual
+        
+        Returns:
+            [integer] -- número da página atual
+        """
+
+        return self._pagina_atual
+
     def get_total_paginas(self):
         """Obtém o total de páginas da reposta
         
@@ -162,9 +171,10 @@ class ApiBase(object):
             [dict] -- Dados da API
         """
         if not self._next_url:
-            self._substitui_query_param('pagina', self._pagina_atual + 1)
+            self._pagina_atual += 1
+            self._substitui_query_param('pagina', self._pagina_atual)
             self._next_url = self._work_url + self._get_query_string()
-
+    
         return self._get_dados(self._next_url)
 
     def has_next(self):
@@ -173,4 +183,4 @@ class ApiBase(object):
         Returns:
             [bool] -- `True` se tiver próxima página de dados
         """
-        return self._pagina_atual < self._total_paginas
+        return self._total_paginas >= self._pagina_atual
