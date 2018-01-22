@@ -45,6 +45,32 @@ class Deputados(ApiBase):
         """
         self._add_query_params("id", ids)
 
+    def set_cnpj_cpf_fornecedor(self, cnpj_cpf_fornecedor):
+        """CNPJ de uma pessoa jurídica, ou CPF de uma pessoa física, fornecedora
+        do produto ou serviço (apenas números)
+
+        Arguments:
+            cnpj_cpf_fornecedor {string} -- CNPJ de uma pessoa jurídica, ou CPF de uma pessoa física
+                                (apenas números)
+        """
+        self._add_query_param('cnpjCpfFornecedor', cnpj_cpf_fornecedor)
+
+    def set_meses(self, meses):
+        """Números dos mêses de ocorrência das despesas
+
+        Arguments:
+            meses {list} -- Números dos mêses
+        """
+        self._add_query_params('mes', meses)
+
+    def set_anos(self, anos):
+        """Anos de ocorrência das despesas.
+
+        Arguments:
+            meses {list} -- Anos, no formato AAAA
+        """
+        self._add_query_params('ano', anos)
+
     def set_ids_legislatura(self, ids_legislatura):
         """Números identificadores de uma ou mais legislaturas de que os parlamentares
         tenham participado
