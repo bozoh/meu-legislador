@@ -17,8 +17,8 @@ class ApiBase(object):
         self._base_uri = 'https://dadosabertos.camara.leg.br/api/'+self.__version__
         self._next_url = ''
         self._work_url = ''
-        self._pagina_atual = 1
-        self._total_paginas = 1
+        self._pagina_atual = 0
+        self._total_paginas = 0
         self.__max_itens_por_pagina = 100
         self.__query_list = dict()
 
@@ -134,15 +134,18 @@ class ApiBase(object):
         if matchs:
             if matchs.group(1):
                 return matchs.group(1)
-        return 1
+        return 0
 
     def __get_total_paginas(self, links):
         last = ''.join([url['href'] for url in links if url['rel'] == 'last'])
         self._total_paginas = int(self.__get_pagina(last))
+        
 
     def __get_pagina_atual(self, links):
         atual = ''.join([url['href'] for url in links if url['rel'] == 'self'])
         self._pagina_atual = int(self.__get_pagina(atual))
+        if self._pagina_atual == 0:
+            self._pagina_atual = 1
 
     def __get_next_url(self, links):
         self._next_url = ''.join([url['href'] for url in links if url['rel'] == 'next'])
@@ -183,4 +186,4 @@ class ApiBase(object):
         Returns:
             [bool] -- `True` se tiver próxima página de dados
         """
-        return self._total_paginas >= self._pagina_atual
+        return self._total_paginas > self._pagina_atual

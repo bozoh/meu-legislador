@@ -7,6 +7,7 @@ câmara dos deputados
 import sys
 from scraperlib.fetchallbase import FetchAllBase
 from scraperlib.deputados.fetchall import FetchDepudados
+from scraperlib.proposicoes.fetchall import FetchProposicoes
 from scraperlib.dataframe_json import DataFrameJson
 
 __author__ = 'Carlos Alexandre S. da Fonseca'

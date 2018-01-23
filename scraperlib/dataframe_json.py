@@ -2,10 +2,12 @@ import gzip
 import ijson
 import pandas as pd
 
-class DataFrameJson(pd.DataFrame):
+class DataFrameJson(object):
     def __init__(self, file_path='db.json.gz'):
-        data_dict = self.__extract_data(file_path)
-        super(DataFrameJson, self).__init__(data_dict)
+        self.__df = pd.DataFrame(self.__extract_data(file_path))
+
+    def get_dataframe(self):
+        return self.__df
 
     def get_pandas_version(self):
         return pd.__version__
@@ -42,9 +44,9 @@ class DataFrameJson(pd.DataFrame):
                 if current_key not in data:
                     data[current_key] = list()
                 if list_level > 1:
-                    tmp_list.append(value)
+                    tmp_list.append(str(value))
                 else:
-                    data[current_key].append(value)
+                    data[current_key].append(str(value))
                     current_key = ''
             #print("current_key=%s | list_level=%i | tmp_list=%s" % (current_key, list_level, tmp_list))
         return data
