@@ -38,7 +38,7 @@ Para isso usa-se o código::
     f = io.BytesIO(web_response.content)
 
     with gzip.GzipFile(fileobj=f) as fh:
-        df = pd.read_json('https://github.com/bozoh/meu-legislador/raw/master/data/ds/deputados.json.gz', orient='split')
+        df = pd.read_json('https://github.com/bozoh/meu-legislador/raw/master/data/ds/deputados/deputados.json.gz', orient='split')
 
 O que os demais arquivos fazem?
 -------------------------------
