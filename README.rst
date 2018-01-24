@@ -43,11 +43,11 @@ Para isso usa-se o código::
 O que os demais arquivos fazem?
 -------------------------------
 Basicamente oferece uma estrutura (longe de estar completa) para obter os dados e salva-los em um formato que facilite o estuto
-usando ferramente como o pandas + jupyter notebooks
+através de ferramentas como o pandas + jupyter notebooks
 
 Que libs eu necessito para obter os dados?
 ------------------------------------------
-No momento o download automático de libs necessárias não foi ativado, por isso é necessário ter as libs:
+No momento o download automático de libs necessárias não foi incluído, por isso é necessário ter as libs:
 
 - ijson
 - pandas
@@ -61,7 +61,7 @@ Até o momento:
 
 - `data/ds/deputados/deputados-ids.dat` - Contém os Números identificadores de todos os deputados deste o 1983
 - `data/ds/deputados/deputados.json.gz` - Contém os dados dos deputados, desde 1983, disponibilizado pelo dados abertos, dados como Nome, partido, situação, ...
-- `data/ds/deputados/deputados.despesas-[ano(s)].json.gz` - Contém os dados dos gastos dos deputados, referênte a um ou mais anos, a partir de 2008 (não há dados anteriores disponíveis)
+- `data/ds/deputados/deputados.despesas-[ano(s)].json.gz` - Contém os dados dos gastos dos deputados, referente a um ou mais anos, a partir de 2008 (não há dados anteriores disponíveis)
 - `data/ds/proposicoes/proposicoes-ids.dat` - Contém os Números identificadores de todas as proposições (PL, PLP, PEC, PLV, PDC, MPV) a partir de 01/01/1984
 - `data/ds/proposicoes/proposicoes.json.gz` - Contém os dados de todas as proposições (PL, PLP, PEC, PLV, PDC, MPV) da câmara dos deputados a partir de 01/01/1984
 
