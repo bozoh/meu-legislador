@@ -85,8 +85,10 @@ class FetchAllBase(object):
         filename = self.__df_tmp_file.name
         self.__df_tmp_file.flush()
         self.__df_tmp_file.close()
-        tmp_df = pd.read_csv(filename)
-        tmp_df.to_json(filepath, orient='split', compression='gzip')
+        if os.path.getsize(filename) > 64:
+            tmp_df = pd.read_csv(filename)
+            tmp_df.to_json(filepath, orient='split', compression='gzip')
+
         os.unlink(filename)
 
     def to_pandas_json_file(self, in_file, out_file):
