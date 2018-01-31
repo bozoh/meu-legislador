@@ -45,15 +45,12 @@ O que os demais arquivos fazem?
 Basicamente oferece uma estrutura (longe de estar completa) para obter os dados e salva-los em um formato que facilite o estuto
 através de ferramentas como o pandas + jupyter notebooks
 
-Que libs eu necessito para obter os dados?
-------------------------------------------
-No momento o download automático de libs necessárias não foi incluído, por isso é necessário ter as libs:
+Instalando dependências 
+-----------------------
+Para instalar as bibliotecas necessárias use o comando::
 
-- ijson
-- pandas
-- numpy
-- console-progressbar
-- requests
+    pip install -r requirements.txt
+
 
 Descrição dos dados disponíveis
 -------------------------------

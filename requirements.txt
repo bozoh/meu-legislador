@@ -1,0 +1,11 @@
+console-progressbar==1.0.2
+cufflinks>=0.12.1
+ijson>=2.3
+matplotlib>=2.0.2
+numpy>=1.14.0
+pandas>=0.22.0
+plotly==2.2.3
+scikit-image>=0.13.0
+scikit-learn>=0.18.2
+scipy>=0.19.1
+requests>=2.9.1
